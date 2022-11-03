@@ -1,6 +1,31 @@
 {
-  "dependencies": {
-    "inquirer": "^8.2.4",
+  "name": "team-profile-generator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "devDependencies": {
     "jest": "^29.2.2"
-  }
+  },
+  "scripts": {
+    "test": "jest --verbose test",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcusC811/Team-Profile-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcusC811/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/MarcusC811/Team-Profile-Generator#readme"
 }
