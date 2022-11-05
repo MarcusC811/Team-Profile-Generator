@@ -8,23 +8,23 @@ function init () {
         .prompt([
             {
                 type: 'input',
-                message: 'What is the name of this employee?',
-                name: 'Name'
+                message: 'Who is the manager of this team?',
+                name: 'manName'
             },
             {
                 type: 'input',
                 message: 'What is their employee ID?',
-                name: 'ID'
+                name: 'manID'
             },
             {
                 type: 'input',
                 message: 'What is their email?',
-                name: 'Email'
+                name: 'manEmail'
             },
             {
                 type: 'input',
                 message: 'What is their office number?',
-                name: 'officeNumber'
+                name: 'manofficeNumber'
             },
             {
                 type: 'list',
