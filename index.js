@@ -21,7 +21,8 @@ let questions = [{
 function init () {
     let team = []
 
-    let emQuestions =  Inquirer
+    let emQuestions =  
+        Inquirer
         .prompt([{
             type: 'input',
             message: 'What is your name?',
@@ -43,35 +44,43 @@ function init () {
             choices: ['Manager', 'Engineer', 'Intern', 'No more members'],
             name: 'role'
         }])
+        .then((answers) => {
+            if(answers.role === 'Engineer') {
+                const engQ = Inquirer
+                 .prompt([
+                    {
+                        type: 'input',
+                        message: 'What is your GitHub username?',
+                        name: 'GitHub'
+                    }
+                ])
+                const newEng = (answers, engQ) => {
+                    team.push(answers, engQ.GitHub)
+                }
+                newEng();
+            } else if(answers.role === 'Intern') {
+                const intQ = Inquirer
+                 .prompt([
+                    {
+                        type: 'input',
+                        message: 'What school do you attend?',
+                        name: 'school'
+                    }
+                ])
+            } else if(answers.role === 'Manager') {
+                const manQ = Inquirer
+                 .prompt([
+                    {
+                        type: 'input',
+                        message: 'What is your office number?',
+                        name: 'offNum'
+                    }
+                ])
+            }
+            
+        })
         
-        if(answer.role === 'Engineer') {
-            const engQ = Inquirer
-             .prompt([
-                {
-                    type: 'input',
-                    message: 'What is your GitHub username?',
-                    name: 'GitHub'
-                }
-            ])
-        } else if(answer.role === 'Intern') {
-            const intQ = Inquirer
-             .prompt([
-                {
-                    type: 'input',
-                    message: 'What school do you attend?',
-                    name: 'school'
-                }
-            ])
-        } else if(answer.role === 'Manager') {
-            const manQ = Inquirer
-             .prompt([
-                {
-                    type: 'input',
-                    message: 'What is your office number?',
-                    name: 'offNum'
-                }
-            ])
-        } else if(!answer.role) {emQuestions}
+        console.log(team)
 
 }
 init();
