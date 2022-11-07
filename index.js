@@ -1,7 +1,8 @@
 const Inquirer = require('inquirer');
 const Jest = require('jest');
 const fs = require('fs');
-const Employee = require('./lib/Employee')
+const Employee = require('./lib/Employee');
+const Engineer = require('./lib/Engineer');
 let questions = [{
     type: 'input',
     message: 'What is your name?',
@@ -21,7 +22,6 @@ let questions = [{
 function init () {
     let team = []
 
-    let emQuestions =  
         Inquirer
         .prompt([
         {
@@ -45,41 +45,12 @@ function init () {
             choices: ['Manager', 'Engineer', 'Intern', 'No more members'],
             name: 'role'
         }])
-        
-        if(answers.role === 'Engineer') {
-            const engQ = Inquirer
-             .prompt([
-                {
-                    type: 'input',
-                    message: 'What is your GitHub username?',
-                    name: 'GitHub'
-                }
-            ])
-            const newEng = (answers, engQ) => {
-                team.push(answers, engQ.GitHub)
+        .then((answers) => {
+            if(answers.role === 'Engineer') {
+                let eng = new Engineer(answers);
+                eng.getGithub();
             }
-            newEng();
-        } else if(answers.role === 'Intern') {
-            const intQ = Inquirer
-             .prompt([
-                {
-                    type: 'input',
-                    message: 'What school do you attend?',
-                    name: 'school'
-                }
-            ])
-        } else if(answers.role === 'Manager') {
-            const manQ = Inquirer
-             .prompt([
-                {
-                    type: 'input',
-                    message: 'What is your office number?',
-                    name: 'offNum'
-                }
-            ])
-        }
-        
-        console.log(team)
+        })
 
 }
 init();
@@ -92,3 +63,39 @@ init();
 
 
 
+// if(answers.role === 'Engineer') {
+                
+//     const newEng =
+//     Inquirer
+//      .prompt([
+//         {
+//             type: 'input',
+//             message: 'What is your GitHub username?',
+//             name: 'GitHub'
+//         }
+//     ])
+    
+//     new Promise((res, rej) => {
+//         res(console.log(engQ.GitHub))
+//     })
+//     newEng();
+// } else if(answers.role === 'Intern') {
+//     const intQ = Inquirer
+//      .prompt([
+//         {
+//             type: 'input',
+//             message: 'What school do you attend?',
+//             name: 'school'
+//         }
+//     ])
+// } else if(answers.role === 'Manager') {
+//     const manQ = Inquirer
+//      .prompt([
+//         {
+//             type: 'input',
+//             message: 'What is your office number?',
+//             name: 'offNum'
+//         }
+//     ])
+// }
+// })
