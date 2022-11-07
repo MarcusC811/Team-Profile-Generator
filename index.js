@@ -3,6 +3,8 @@ const Jest = require('jest');
 const fs = require('fs');
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 let questions = [{
     type: 'input',
     message: 'What is your name?',
@@ -49,9 +51,14 @@ function init () {
             if(answers.role === 'Engineer') {
                 let eng = new Engineer(answers);
                 eng.getGithub();
+            } else if(answers.role === 'Intern') {
+                let int = new Intern(answers)
+                int.getSchool();
+            } else if(answers.role === 'Manager') {
+                let man = new Manager(answers);
+                man.getOff();
             }
         })
-
 }
 init();
 
