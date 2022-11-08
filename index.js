@@ -47,32 +47,58 @@ function init () {
                     }
                 ])  
                 .then((answers) => {
-                    console.log(response, answers)
                     let member = {...response, ...answers};
-                    console.log(member)
+                    // team.push(member)
+                    addTeam(member);
                 })
-                
-            } 
+            } else if(response.role === 'Intern') {
+                Inquirer
+                .prompt([
+                    {
+                        type: 'input',
+                        message: 'What school do you attend?',
+                        name: 'School'
+                    }
+                ])
+                .then((answers) => {
+                    let member = {...response, ...answers};
+                    // team.push(member)
+                    addTeam(member);
+                })
+            } else if(response.role === 'Manager') {
+                Inquirer
+                .prompt([
+                    {
+                        type: 'input',
+                        message: 'What is your office number?',
+                        name: 'offNum'
+                    }
+                ])
+                .then((answers) => {
+                    let member = {...response, ...answers};
+                    // team.push(member)
+                    addTeam(member);
+                })
+            }
             
         })
 }
 
-function getGithub() {
-    Inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: 'What is your GitHub username?',
-                name: 'GitHub'
-            }
-        ])           
+function addTeam (member) {
+    team.push(member);
 }
+
+function genHTML (team) {
+    let content = ``
+    
+    fs.writeFile('index.HTML', content, err => {
+        if (err) {
+          console.error(err);
+        }
+        // file written successfully
+        console.log('success')
+      });
+}
+
 init();
 
-// else if(answers.role === 'Intern') {
-            //     let int = new Intern(answers)
-            //     int.getSchool();
-            // } else if(answers.role === 'Manager') {
-            //     let man = new Manager(answers);
-            //     man.getOff();
-            // }
