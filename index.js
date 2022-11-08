@@ -34,14 +34,11 @@ let questions = [{
 
 
 function init () {
-
-    let member = {};
-
-        let employeeQuestions = Inquirer
+        Inquirer
         .prompt(questions)
         .then((response) => {
             if(response.role === 'Engineer') {
-                const eQuest = Inquirer
+                Inquirer
                 .prompt([
                     {
                         type: 'input',
@@ -50,7 +47,9 @@ function init () {
                     }
                 ])  
                 .then((answers) => {
-                    console.log(this.response, employeeQuestions)
+                    console.log(response, answers)
+                    let member = {...response, ...answers};
+                    console.log(member)
                 })
                 
             } 
