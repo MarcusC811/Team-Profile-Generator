@@ -37,10 +37,10 @@ function init () {
 
     let member = {};
 
-        Inquirer
+        let employeeQuestions = Inquirer
         .prompt(questions)
-        .then((answers) => {
-            if(answers.role === 'Engineer') {
+        .then((response) => {
+            if(response.role === 'Engineer') {
                 const eQuest = Inquirer
                 .prompt([
                     {
@@ -49,10 +49,10 @@ function init () {
                         name: 'GitHub'
                     }
                 ])  
+                .then((answers) => {
+                    console.log(this.response, employeeQuestions)
+                })
                 
-                let eng = new Engineer(answers.name, answers.email, answers.id, eQuest.GitHub);
-                // eng.getGithub(answers.name, answers.email, answers.id);
-                team.push(eng)
             } 
             
         })
