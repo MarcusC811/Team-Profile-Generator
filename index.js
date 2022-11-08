@@ -32,7 +32,7 @@ let questions = [{
     name: 'role'
 }]
 
-e
+
 function init () {
 
     let member = {};
@@ -41,7 +41,14 @@ function init () {
         .prompt(questions)
         .then((answers) => {
             if(answers.role === 'Engineer') {
-                const eQuest = getGithub();
+                const eQuest = Inquirer
+                .prompt([
+                    {
+                        type: 'input',
+                        message: 'What is your GitHub username?',
+                        name: 'GitHub'
+                    }
+                ])  
                 
                 let eng = new Engineer(answers.name, answers.email, answers.id, eQuest.GitHub);
                 // eng.getGithub(answers.name, answers.email, answers.id);
