@@ -5,12 +5,10 @@ describe('Getting Employee Info', () => {
         const name = 'Marcus';
         const email = 'marcus@gmail.com';
         const id = 123;
-        const role = 'Manager';
-        const e = new Employee(name, email, id, role);
+        const e = new Employee(name, email, id);
 
         expect(e.name).toEqual(name);
         expect(e.email).toEqual(email);
         expect(e.id).toEqual(id);
-        expect(e.role).toEqual(role);
     })
 })

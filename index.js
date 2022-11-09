@@ -8,8 +8,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-let team = []
-// let teamDiv = document.getElementsByClassName("addtome")
+let team = [];
 
 let questions = [{
     type: 'input',
@@ -49,7 +48,6 @@ function init () {
                 ])  
                 .then((answers) => {
                     let member = {...response, ...answers};
-                    // team.push(member)
                     addTeam(member);
                 })
             } else if(response.role === 'Intern') {
@@ -63,7 +61,6 @@ function init () {
                 ])
                 .then((answers) => {
                     let member = {...response, ...answers};
-                    // team.push(member)
                     addTeam(member);
                 })
             } else if(response.role === 'Manager') {
@@ -77,7 +74,6 @@ function init () {
                 ])
                 .then((answers) => {
                     let member = {...response, ...answers};
-                    // team.push(member)
                     addTeam(member);
                 })
             }
@@ -166,7 +162,6 @@ function genHTML (team) {
         if (err) {
           console.error(err);
         }
-        // file written successfully
         console.log('success')
       });
 }
